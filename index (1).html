@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <style>
+        :root {
+            --bg-color: #f0f0f0;
+            --text-color: #000;
+            --container-bg-color: #fff;
+        }
+        [data-theme="dark"] {
+            --bg-color: #333;
+            --text-color: #fff;
+            --container-bg-color: #444;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .container {
+            background-color: var(--container-bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .event-form, .holiday-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .event-form input, .event-form button, .holiday-form select, .holiday-form button {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .event-form button, .holiday-form button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .countdown {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+        .countdown div {
+            margin: 5px 0;
+        }
+        #stopButton {
+            background-color: #FF0000;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .theme-toggle {
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <div class="container">
+        <form class="event-form" id="eventForm">
+            <input type="text" id="eventName" placeholder="Event Name" required>
+            <input type="date" id="eventDate" required>
+            <input type="time" id="eventTime" placeholder="Event Time">
+            <button type="submit">Start</button>
+        </form>
+        <form class="holiday-form" id="holidayForm">
+            <select id="holidaySelect">
+                <option value="" disabled selected>Select a holiday</option>
+                <option value="2025-12-25T00:00:00">Christmas</option>
+                <option value="2025-04-20T00:00:00">Easter</option>
+                <option value="2025-04-21T00:00:00">Tiradentes' Day</option>
+                <option value="2025-01-01T00:00:00">New Year's Day</option>
+                <option value="2025-11-02T00:00:00">All Souls' Day</option>
+                <option value="2025-12-31T00:00:00">New Year's Eve</option>
+                <!-- Add more holidays as needed -->
+            </select>
+            <button type="submit">Start Holiday Countdown</button>
+        </form>
+        <div id="countdownContainer">
+            <!-- Countdown timer will be displayed here -->
+        </div>
+        <button id="stopButton" style="display: none;">Stop</button>
+        <button class="theme-toggle" id="themeToggle">Toggle Dark Theme</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
